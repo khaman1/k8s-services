@@ -4,8 +4,8 @@ from rsmq import RedisSMQ
 from config.vars import *
 from tasks import *
 
-input_queue = RedisSMQ(host='redis-clusterip-srv', qname=APP_NAME+"_input_queue")
-output_queue = RedisSMQ(host='redis-clusterip-srv', qname=APP_NAME+"_output_queue")
+input_queue = RedisSMQ(host='redis-srv', qname=APP_NAME+"_input_queue")
+output_queue = RedisSMQ(host='redis-srv', qname=APP_NAME+"_output_queue")
 
 input_queue.createQueue(delay=0).vt(TIMEOUT).execute()
 output_queue.createQueue(delay=0).vt(TIMEOUT).execute()
