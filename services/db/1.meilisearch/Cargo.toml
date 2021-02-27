@@ -1,0 +1,10 @@
+[workspace]
+members = [
+    "meilisearch-core",
+    "meilisearch-http",
+    "meilisearch-schema",
+    "meilisearch-types",
+]
+
+[profile.release]
+debug = true

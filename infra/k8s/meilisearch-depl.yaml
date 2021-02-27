@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: meilisearch-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: meilisearch
+  template:
+    metadata:
+      labels:
+        app: meilisearch
+    spec:
+      containers:
+        - name: meilisearch
+          image: khaclub/meilisearch
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: meilisearch-srv
+spec:
+  selector:
+    app: meilisearch
+  ports:
+    - name: meilisearch
+      protocol: TCP
+      port: 7000
+      targetPort: 7000
