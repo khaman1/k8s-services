@@ -22,14 +22,6 @@ spec:
             path: /time/?(.*)
             backend:
               service:
-                name: time-srv
+                name: time-clusterip-srv
                 port:
                   number: 4001
-
-          - pathType: Prefix
-            path: /?(.*)
-            backend:
-              service:
-                name: posts-clusterip-srv
-                port:
-                  number: 4000

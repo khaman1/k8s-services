@@ -1,10 +1,6 @@
 import time
-import redis
-from flask import Flask
-from config.init import *
-
-app = Flask(__name__)
-cache = redis.Redis(host='redis-clusterip-srv', port=6379)
+import requests
+from config.config import *
 
 def get_hit_count():
     retries = 5
@@ -17,10 +13,19 @@ def get_hit_count():
             retries -= 1
             time.sleep(0.5)
 
-@app.route('/posts', methods = ['GET'])
-def hello():
+@app.route('/' + URL_PREFIX, methods = ['GET'])
+def check_visit():
     # return {
     #     'msg': 'Hello World'
     # }
     count = get_hit_count()
-    return 'Hello World! I have been seen {} times.\n'.format(count)
+    return 'Hello World! I have been seen {} times...\n'.format(count)
+
+
+@app.route('/' + URL_PREFIX + '/time', methods = ['GET'])
+def get_time_from_external():
+    # return {
+    #     'msg': 'Hello World'
+    # }
+    count = get_hit_count()
+    return 'Hello World! I have been seen {} times...\n'.format(count)
