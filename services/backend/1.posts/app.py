@@ -26,7 +26,7 @@ def check_visit():
 
 @app.route('/' + URL_PREFIX + '/time', methods = ['GET'])
 def get_time_from_external():
-    retries = 5
+    retries = 25
     
     time_input_queue.sendMessage(delay=0).message(json.dumps({'msg':'Hello World'})).execute()
     
@@ -41,6 +41,6 @@ def get_time_from_external():
             return msg
         except:
             retries -= 1
-            time.sleep(0.5)
+            time.sleep(0.1)
     
     return 'Oops ...'
