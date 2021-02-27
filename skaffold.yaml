@@ -8,19 +8,19 @@ build:
   local:
     push: false
   artifacts:
-    - image: stephengrider/client
-      context: client
+    - image: khaclub/posts
+      context: services\backend\1.posts
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: 'src/**/*.js'
+          - src: '*.py'
             dest: .
-    - image: stephengrider/comments
-      context: comments
+    - image: khaclub/time
+      context: services\backend\2.time
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: '*.js'
+          - src: '*.py'
             dest: .
