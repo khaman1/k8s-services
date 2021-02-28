@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: time
-          image: khaclub/time:latest
-          imagePullPolicy: "Always"
+          image: khaclub/time
+          imagePullPolicy: "Never"
           resources:
             requests:
               cpu: "100m"

@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
         - name: posts
-          image: khaclub/posts:latest
-          imagePullPolicy: "Always"
+          image: khaclub/posts
+          imagePullPolicy: "Never"
           resources:
             requests:
               cpu: "500m"

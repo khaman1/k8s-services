@@ -3,13 +3,18 @@ kind: Config
 deploy:
   kubectl:
     manifests:
-      - ./infra/k8s/*
+      - infra/k8s/ingress-srv.yaml
+      - infra/k8s/main-srv.yaml
+      - infra/k8s/meilisearch-depl.yaml
+      - infra/k8s/posts-depl.yaml
+      - infra/k8s/redis-depl.yaml
+      - infra/k8s/time-depl.yaml
 build:
   local:
     push: false
   artifacts:
     - image: khaclub/posts
-      context: ./services/backend/1.posts
+      context: services/backend/1.posts
       docker:
         dockerfile: Dockerfile
       sync:
@@ -17,10 +22,18 @@ build:
           - src: '*.py'
             dest: .
     - image: khaclub/time
-      context: ./services/backend/2.time
+      context: services/workers/1.time
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
           - src: '*.py'
+            dest: .
+    - image: khaclub/redis
+      context: services/cache/1.redis
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '*.conf'
             dest: .
