@@ -7,8 +7,15 @@ from tasks import *
 input_queue = RedisSMQ(host='redis-srv', qname=APP_NAME+"_input_queue")
 output_queue = RedisSMQ(host='redis-srv', qname=APP_NAME+"_output_queue")
 
-input_queue.createQueue(delay=0).vt(TIMEOUT).execute()
-output_queue.createQueue(delay=0).vt(TIMEOUT).execute()
+try:
+    input_queue.createQueue(delay=0).vt(TIMEOUT).execute()
+except:
+    pass
+
+try:
+    output_queue.createQueue(delay=0).vt(TIMEOUT).execute()
+except:
+    pass
 
 while True:
     sleep(DELAY)

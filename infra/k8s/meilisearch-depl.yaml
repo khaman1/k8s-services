@@ -13,8 +13,11 @@ spec:
         app: meilisearch
     spec:
       containers:
-        - name: meilisearch
-          image: khaclub/meilisearch
+      - name: meilisearch
+        image: khaclub/meilisearch
+        env:
+        - name: MEILI_MASTER_KEY
+          value: "meilisearch-dev"
 ---
 apiVersion: v1
 kind: Service
@@ -26,5 +29,5 @@ spec:
   ports:
     - name: meilisearch
       protocol: TCP
-      port: 7000
-      targetPort: 7000
+      port: 7700
+      targetPort: 7700

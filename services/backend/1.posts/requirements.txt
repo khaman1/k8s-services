@@ -1,3 +1,4 @@
 quart
 redis
 PyRSMQ
+meilisearch

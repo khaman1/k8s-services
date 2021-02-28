@@ -1,5 +1,5 @@
 import redis
-from quart import Quart, render_template, websocket
+from quart import Quart, render_template, websocket, request
 from .vars import *
 
 app = Quart(__name__)
