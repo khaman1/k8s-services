@@ -9,6 +9,7 @@ deploy:
       - infra/k8s/posts-depl.yaml
       - infra/k8s/redis-depl.yaml
       - infra/k8s/time-depl.yaml
+      - infra/k8s/external-loadbalancer.yaml
 build:
   local:
     push: false
