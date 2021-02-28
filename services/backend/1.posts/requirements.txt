@@ -1,4 +1,3 @@
-flask
+quart
 redis
-requests
 PyRSMQ

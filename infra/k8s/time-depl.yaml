@@ -16,6 +16,14 @@ spec:
         - name: time
           image: khaclub/time:latest
           imagePullPolicy: "Always"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "32Mi"
+            limits:
+              cpu: "200m"
+              memory: "40Mi"
+            
 ---
 apiVersion: v1
 kind: Service

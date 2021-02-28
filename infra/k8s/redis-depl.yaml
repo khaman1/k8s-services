@@ -15,6 +15,13 @@ spec:
       containers:
         - name: redis
           image: khaclub/redis
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "200Mi"
+            limits:
+              cpu: "700m"
+              memory: "300Mi"
 ---
 apiVersion: v1
 kind: Service

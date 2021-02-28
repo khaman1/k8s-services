@@ -1,10 +1,9 @@
 import json
 import time
-import requests
 from config.config import *
 from config.extra import *
 
-def get_hit_count():
+async def get_hit_count():
     retries = 5
     while True:
         try:
@@ -16,16 +15,16 @@ def get_hit_count():
             time.sleep(0.5)
 
 @app.route('/' + URL_PREFIX, methods = ['GET'])
-def check_visit():
+async def check_visit():
     # return {
     #     'msg': 'Hello World'
     # }
-    count = get_hit_count()
+    count = await get_hit_count()
     return 'Hello World! I have been seen {} times...\n'.format(count)
 
 
 @app.route('/' + URL_PREFIX + '/time', methods = ['GET'])
-def get_time_from_external():
+async def get_time_from_external():
     retries = 25
     
     time_input_queue.sendMessage(delay=0).message(json.dumps({'msg':'Hello World'})).execute()
@@ -44,3 +43,8 @@ def get_time_from_external():
             time.sleep(0.1)
     
     return 'Oops ...'
+
+
+
+if __name__ == "__main__":
+    app.run(host=HOST, port=PORT)

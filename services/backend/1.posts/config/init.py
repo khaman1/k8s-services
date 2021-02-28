@@ -1,9 +1,9 @@
 from .config import *
 
 @app.route('/', methods = ['GET'])
-def hello():
+async def hello():
     return "Service: " + URL_PREFIX
 
 @app.route('/' + URL_PREFIX + '/version', methods = ['GET'])
-def app_version():
-    return APP_VERSION
+async def app_version():
+    return str(APP_VERSION)

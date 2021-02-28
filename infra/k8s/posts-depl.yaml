@@ -16,6 +16,13 @@ spec:
         - name: posts
           image: khaclub/posts:latest
           imagePullPolicy: "Always"
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "200Mi"
+            limits:
+              cpu: "700m"
+              memory: "300Mi"
 ---
 apiVersion: v1
 kind: Service
