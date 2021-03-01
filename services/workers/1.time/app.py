@@ -20,7 +20,7 @@ except:
 
 while True:
     sleep(DELAY)
-    print(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
+    #print(datetime.now().strftime("%d/%m/%Y %H:%M:%S"))
     try:
         msg = input_queue.receiveMessage().execute()
     except:
