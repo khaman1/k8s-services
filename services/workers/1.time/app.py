@@ -3,6 +3,7 @@ from time import sleep
 from rsmq import RedisSMQ
 from config.vars import *
 from tasks import *
+import json
 
 input_queue = RedisSMQ(host='redis-srv', qname=APP_NAME+"_input_queue")
 output_queue = RedisSMQ(host='redis-srv', qname=APP_NAME+"_output_queue")
