@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: posts-depl
+  name: quart-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: posts
+      app: quart
   template:
     metadata:
       labels:
-        app: posts
+        app: quart
     spec:
       containers:
-        - name: posts
-          image: khaclub/posts
+        - name: quart
+          image: khaclub/quart
           imagePullPolicy: "Never"
           resources:
             requests:
@@ -27,12 +27,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: posts-clusterip-srv
+  name: quart-clusterip-srv
 spec:
   selector:
-    app: posts
+    app: quart
   ports:
-    - name: posts
+    - name: quart
       protocol: TCP
       port: 4000
       targetPort: 4000

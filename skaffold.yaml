@@ -6,7 +6,7 @@ deploy:
       - infra/k8s/ingress-srv.yaml
       - infra/k8s/main-srv.yaml
       - infra/k8s/meilisearch-depl.yaml
-      - infra/k8s/posts-depl.yaml
+      - infra/k8s/quart-depl.yaml
       - infra/k8s/redis-depl.yaml
       - infra/k8s/time-depl.yaml
       - infra/k8s/external-loadbalancer.yaml
@@ -14,8 +14,8 @@ build:
   local:
     push: false
   artifacts:
-    - image: khaclub/posts
-      context: services/backend/1.posts
+    - image: khaclub/quart
+      context: services/backend/1.quart
       docker:
         dockerfile: Dockerfile
       sync:
