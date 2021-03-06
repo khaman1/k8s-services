@@ -1,12 +1,11 @@
-# python-kubernetes
-python-kubernetes
+#K8s-services
 
 
 Stack:
   - Ops: K8s, metrics, skaffold
-  - Frontend: React.js
-  - Backend: Quart
+  - Frontend: Reactjs
+  - Backend: Quart, Expressjs, Nestjs
   - Caching: Redis
   - DB: MariaDB, MongoDB, Meilisearch
-  - MQ: RedisMQ
+  - MQ: RedisMQ, Kafka
   - Worker
