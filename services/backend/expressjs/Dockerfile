@@ -6,4 +6,4 @@ ENV PORT=4000
 EXPOSE 4000
 
 RUN npm install
-CMD ['npm','start']
+CMD [ "node", "./bin/www" ]

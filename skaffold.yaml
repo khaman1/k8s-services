@@ -5,11 +5,10 @@ deploy:
     manifests:
       - infra/k8s/ingress-srv.yaml
       - infra/k8s/main-srv.yaml
-      - infra/k8s/nestjs-depl.yaml
-      #- infra/k8s/quart-depl.yaml
-      #- infra/k8s/time-depl.yaml
+      - infra/k8s/backend/expressjs-depl.yaml
+      - infra/k8s/worker/time-depl.yaml
+      - infra/k8s/cache/redis-depl.yaml
 
-      #- infra/k8s/extra/redis-depl.yaml
       # - infra/k8s/extra/meilisearch-depl.yaml
       # - infra/k8s/external-loadbalancer.yaml
       # - infra/k8s/kafka/*.yaml
@@ -44,7 +43,7 @@ build:
 
 
     - image: khaclub/time
-      context: services/workers/time
+      context: services/worker/time
       docker:
         dockerfile: Dockerfile
       sync:

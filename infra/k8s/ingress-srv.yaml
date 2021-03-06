@@ -13,26 +13,18 @@ spec:
     - host: posts.com
       http:
         paths:
-          - pathType: Prefix
-            path: /posts/?(.*)
-            backend:
-              service:
-                name: posts-clusterip-srv
-                port:
-                  number: 4000
-
-          - pathType: Prefix
-            path: /time/?(.*)
-            backend:
-              service:
-                name: time-srv
-                port:
-                  number: 4001
+          # - pathType: Prefix
+          #   path: /posts/?(.*)
+          #   backend:
+          #     service:
+          #       name: expressjs-clusterip-srv
+          #       port:
+          #         number: 4000
 
           - pathType: Prefix
             path: /?(.*)
             backend:
               service:
-                name: posts-clusterip-srv
+                name: expressjs-clusterip-srv
                 port:
                   number: 4000
