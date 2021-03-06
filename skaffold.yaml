@@ -5,10 +5,11 @@ deploy:
     manifests:
       - infra/k8s/ingress-srv.yaml
       - infra/k8s/main-srv.yaml
-      - infra/k8s/quart-depl.yaml
-      - infra/k8s/time-depl.yaml
+      - infra/k8s/nestjs-depl.yaml
+      #- infra/k8s/quart-depl.yaml
+      #- infra/k8s/time-depl.yaml
 
-      - infra/k8s/extra/redis-depl.yaml
+      #- infra/k8s/extra/redis-depl.yaml
       # - infra/k8s/extra/meilisearch-depl.yaml
       # - infra/k8s/external-loadbalancer.yaml
       # - infra/k8s/kafka/*.yaml
@@ -16,24 +17,44 @@ build:
   local:
     push: false
   artifacts:
-    - image: khaclub/quart
-      context: services/backend/1.quart
+    # - image: khaclub/quart
+    #   context: services/backend/quart
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: '*.py'
+    #         dest: .
+    # - image: khaclub/nestjs
+    #   context: services/backend/nestjs
+    #   docker:
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: '*.js'
+    #         dest: .
+    - image: khaclub/expressjs
+      context: services/backend/expressjs
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: '*.py'
+          - src: '*.js'
             dest: .
+
+
     - image: khaclub/time
-      context: services/workers/1.time
+      context: services/workers/time
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
           - src: '*.py'
             dest: .
+
+
     - image: khaclub/redis
-      context: services/cache/1.redis
+      context: services/cache/redis
       docker:
         dockerfile: Dockerfile
       sync:
