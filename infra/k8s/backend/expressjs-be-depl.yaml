@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: expressjs-depl
+  name: expressjs-be-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: expressjs
+      app: expressjs-be
   template:
     metadata:
       labels:
-        app: expressjs
+        app: expressjs-be
     spec:
       containers:
-        - name: expressjs
-          image: khaclub/expressjs
+        - name: expressjs-be
+          image: khaclub/expressjs-be
           imagePullPolicy: "Never"
           resources:
             requests:
@@ -27,12 +27,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: expressjs-clusterip-srv
+  name: expressjs-be-clusterip-srv
 spec:
   selector:
-    app: expressjs
+    app: expressjs-be
   ports:
-    - name: expressjs
+    - name: expressjs-be
       protocol: TCP
       port: 4000
       targetPort: 4000
