@@ -5,12 +5,12 @@ deploy:
     manifests:
       - infra/k8s/ingress-srv.yaml
       - infra/k8s/main-srv.yaml
-      - infra/k8s/backend/expressjs-be-depl.yaml
+      - infra/k8s/backend/quart-depl.yaml
       - infra/k8s/worker/time-depl.yaml
       - infra/k8s/cache/redis-depl.yaml
-      - infra/k8s/db_storage/mongo-depl.yaml
+      # - infra/k8s/db_storage/mongo-depl.yaml
 
-      # - infra/k8s/extra/meilisearch-depl.yaml
+      - infra/k8s/db_storage/meilisearch-depl.yaml
       # - infra/k8s/external-loadbalancer.yaml
       # - infra/k8s/kafka/*.yaml
 build:
@@ -33,8 +33,8 @@ build:
     #     manual:
     #       - src: '*.js'
     #         dest: .
-    - image: khaclub/expressjs-be
-      context: services/backend/expressjs-be
+    - image: khaclub/quart
+      context: services/backend/quart
       docker:
         dockerfile: Dockerfile
       sync:
